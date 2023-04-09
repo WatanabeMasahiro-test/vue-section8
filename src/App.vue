@@ -1,26 +1,59 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <AppHeader></AppHeader>
+  <!-- <div class="container"> -->
+    <h1>ここはApp.Vue</h1>
+    <p>{{ msg_f(msg) }}</p>
+    <AppSecond :ten-num="tenNum" :fifty-Num="fiftyNum" v-on:my-click="msg_f"></AppSecond>
+    <AppThird eight-num="8">
+      <div style="background-color:yellow;">デフォルトSLOTに表示されるか確認</div>
+      <template v-slot:title>
+        <h1>SLOTのテスト</h1>
+      </template>
+      <template v-slot:number>
+        <p>{{ slotTestNumber }}</p>
+      </template>
+    </AppThird>
+  <!-- </div> -->
+  <AppFooter></AppFooter>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import AppHeader from './components/AppHeader.vue'
+import AppFooter from './components/AppFooter.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    AppHeader,
+    AppFooter
+  },
+  data: () => ({
+    msg     : 'App.vue MSG',
+    tenNum  : 10,
+    fiftyNum : 50,
+    slotTestNumber : 77777,
+  }),
+  methods: {
+    msg_f(value) {
+      if(value == "子コンポーネント") {
+        this.msg = value
+      }
+      return this.msg;
+    },
   }
 }
 </script>
 
+<script setup lang="ts">
+
+</script>
+
 <style>
+/* p {
+  color: blue;
+} */
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  background-color: beige;
 }
 </style>
