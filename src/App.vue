@@ -3,10 +3,16 @@
   <!-- <div class="container"> -->
     <h1>ここはApp.Vue</h1>
     <p>{{ msg_f(msg) }}</p>
-    <AppSecond :ten-num="tenNum" :fifty-Num="fiftyNum" v-on:my-click="msg_f"></AppSecond>
+    <AppSecond :ten-num="tenNum" :fifty-Num="fiftyNum" v-on:my-click="msg_f" v-slot="defaultSlotProps">
+       <p>{{ defaultSlotProps }}</p>
+    </AppSecond>
     <AppThird eight-num="8">
+      <template v-slot:[title]></template>
       <div style="background-color:yellow;">デフォルトSLOTに表示されるか確認</div>
-      <template v-slot:title="titleSlotProps">
+      <!-- <template v-slot:default="defaultSlotProps2">
+        <p>{{ defaultSlotProps2 }}</p>
+      </template> -->
+      <template #title="titleSlotProps">
         <h1>SLOTのテスト</h1>
         <h2>{{ titleSlotProps.user.firstName }}<span>{{ titleSlotProps.user.lastName }}</span></h2>
       </template>
@@ -29,10 +35,11 @@ export default {
     AppFooter
   },
   data: () => ({
-    msg     : 'App.vue MSG',
-    tenNum  : 10,
+    msg      : 'App.vue MSG',
+    tenNum   : 10,
     fiftyNum : 50,
     slotTestNumber : 77777,
+    title    : "タイトルです",
   }),
   methods: {
     msg_f(value) {

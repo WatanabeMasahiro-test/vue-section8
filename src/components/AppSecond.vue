@@ -9,6 +9,7 @@
         <div style="background-color: aqua;">
             <button @click="onClickBtn">ボタン【@emit】</button>
         </div>
+        <slot :user="user" text="text"></slot>
     </div>
 </template>
 
@@ -21,8 +22,8 @@ export default {
     number : 123,
     msg : "子コンポーネント",
     user: {
-      firstName : "Jack",
-      lastName  : "Donald",
+      firstName : "Ichiro",
+      lastName  : "Tanaka",
     }
   }),
   props : {
