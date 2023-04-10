@@ -6,8 +6,9 @@
     <AppSecond :ten-num="tenNum" :fifty-Num="fiftyNum" v-on:my-click="msg_f"></AppSecond>
     <AppThird eight-num="8">
       <div style="background-color:yellow;">デフォルトSLOTに表示されるか確認</div>
-      <template v-slot:title>
+      <template v-slot:title="titleSlotProps">
         <h1>SLOTのテスト</h1>
+        <h2>{{ titleSlotProps.user.firstName }}<span>{{ titleSlotProps.user.lastName }}</span></h2>
       </template>
       <template v-slot:number>
         <p>{{ slotTestNumber }}</p>

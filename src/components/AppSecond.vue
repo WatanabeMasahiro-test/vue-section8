@@ -19,7 +19,11 @@ export default {
 //   props : ["tenNum"],
   data: () => ({
     number : 123,
-    msg : "子コンポーネント"
+    msg : "子コンポーネント",
+    user: {
+      firstName : "Jack",
+      lastName  : "Donald",
+    }
   }),
   props : {
     tenNum : {
