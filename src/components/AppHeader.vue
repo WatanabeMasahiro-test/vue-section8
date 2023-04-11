@@ -1,5 +1,6 @@
 <template>
     <header>My AppHeader.vue. header...</header>
+    <h3>はじめまして</h3>
     <AppHeaderNavbar></AppHeaderNavbar>
 </template>
 
